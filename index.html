@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Buku Panduan Praktis PMT Pangan Lokal Balita Gizi Kurang</title>
+  <meta name="description" content="Flipbook interaktif panduan praktis makanan tambahan berbahan pangan lokal untuk balita gizi kurang - Puskesmas Wonokromo">
+  
+  <!-- Favicon & Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- StPageFlip Library -->
+  <script src="assets/js/page-flip.browser.js"></script>
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-light">
+  <!-- App Container -->
+  <div id="app" class="app-wrapper">
+
+    <!-- Top Navigation Bar -->
+    <header class="top-nav">
+      <div class="nav-left">
+        <div class="brand-badge">
+          <div class="brand-icon">
+            <i data-lucide="book-open"></i>
+          </div>
+          <div class="brand-info">
+            <h1 class="brand-title">Panduan Edukasi Balita Gizi</h1>
+            <span class="brand-subtitle">Puskesmas Wonokromo &bull; Pangan Lokal</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions / G-Form Action Center -->
+      <div class="nav-center">
+        <a id="navGformBtn" href="https://docs.google.com/forms/d/e/1FAIpQLSfOfoPuaTh7JMjJ1oFSze31kfmUiqKKR8ETR2IQn9tKEXeLnw/viewform" class="gform-nav-pill" target="_blank" rel="noopener noreferrer" title="Isi Formulir Evaluasi / Kuesioner">
+          <span class="pulse-indicator"></span>
+          <i data-lucide="clipboard-check" class="pill-icon"></i>
+          <span class="pill-text">Isi Kuesioner (G-Form)</span>
+          <i data-lucide="external-link" class="pill-ext"></i>
+        </a>
+      </div>
+
+      <div class="nav-right">
+        <!-- Ambient Theme Toggle -->
+        <button id="themeToggleBtn" class="icon-btn" title="Ganti Tema Latar (Terang/Gelap/Hangat)" aria-label="Ganti Tema">
+          <i data-lucide="sun-moon"></i>
+        </button>
+
+        <!-- Sound Toggle -->
+        <button id="soundToggleBtn" class="icon-btn active" title="Efek Suara Lembar Kertas (Aktif)" aria-label="Toggle Sound">
+          <i data-lucide="volume-2" id="soundIcon"></i>
+        </button>
+
+        <!-- Thumbnail Grid Toggle -->
+        <button id="thumbToggleBtn" class="icon-btn" title="Daftar Thumbnail Halaman" aria-label="Thumbnail Grid">
+          <i data-lucide="layout-grid"></i>
+        </button>
+
+        <!-- Table of Contents Toggle -->
+        <button id="tocToggleBtn" class="icon-btn" title="Daftar Isi & Kuesioner" aria-label="Daftar Isi">
+          <i data-lucide="menu"></i>
+        </button>
+
+        <!-- Zoom / Fullscreen -->
+        <button id="zoomModalBtn" class="icon-btn" title="Perbesar Tampilan (Zoom HD)" aria-label="Zoom">
+          <i data-lucide="zoom-in"></i>
+        </button>
+
+        <button id="fullscreenBtn" class="icon-btn" title="Layar Penuh" aria-label="Layar Penuh">
+          <i data-lucide="maximize" id="fullscreenIcon"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Flipbook Stage -->
+    <main class="flipbook-viewport" id="bookViewport">
+      <!-- Loading indicator -->
+      <div id="loader" class="loader-overlay">
+        <div class="spinner"></div>
+        <p>Memuat Buku Panduan...</p>
+      </div>
+
+      <!-- Previous Page Arrow Overlay -->
+      <button id="prevBtn" class="side-nav-btn prev-btn" aria-label="Halaman Sebelumnya" title="Halaman Sebelumnya (Panah Kiri)">
+        <i data-lucide="chevron-left"></i>
+      </button>
+
+      <!-- Flipbook Container -->
+      <div class="book-stage" id="bookStage">
+        <div id="flipbook" class="flip-book">
+          
+          <!-- Page 1: Sampul Depan -->
+          <div class="page-sheet" data-density="hard" data-title="Sampul Depan (Cover)">
+            <div class="page-content">
+              <img src="assets/pages/page_1.webp" alt="Halaman 1 - Panduan Praktis Pangan Lokal untuk Balita Gizi Kurang" class="page-img" loading="eager">
+              <div class="page-corner-hint top-right"></div>
+            </div>
+          </div>
+
+          <!-- Page 2: Halaman Judul & Filosofi -->
+          <div class="page-sheet" data-density="soft" data-title="Panduan Praktis">
+            <div class="page-content">
+              <img src="assets/pages/page_2.webp" alt="Halaman 2 - Aldenaire Academy Panduan Praktis Pangan Lokal" class="page-img" loading="lazy">
+            </div>
+          </div>
+
+          <!-- Page 3: Kata Pengantar -->
+          <div class="page-sheet" data-density="soft" data-title="Pengantar Program Gizi">
+            <div class="page-content">
+              <img src="assets/pages/page_3.webp" alt="Halaman 3 - Pengantar Buku Panduan Praktis PMT Balita" class="page-img" loading="lazy">
+            </div>
+          </div>
+
+          <!-- Page 4: Edukasi Apa Itu Gizi Kurang -->
+          <div class="page-sheet" data-density="soft" data-title="Apa Itu Gizi Kurang?">
+            <div class="page-content">
+              <img src="assets/pages/page_4.webp" alt="Halaman 4 - Apa Itu Gizi Kurang dan Pemantauan Berkala" class="page-img" loading="lazy">
+            </div>
+          </div>
+
+          <!-- Page 5: Prinsip PMT Balita -->
+          <div class="page-sheet" data-density="soft" data-title="Prinsip Makanan Tambahan">
+            <div class="page-content">
+              <img src="assets/pages/page_5.webp" alt="Halaman 5 - Mendukung Pertumbuhan & Kebutuhan Energi Protein" class="page-img" loading="lazy">
+            </div>
+          </div>
+
+          <!-- Page 6: Variasi Bahan Makanan Lokal -->
+          <div class="page-sheet" data-density="soft" data-title="Variasi Bahan Makanan">
+            <div class="page-content">
+              <img src="assets/pages/page_6.webp" alt="Halaman 6 - Variasi Bahan Makanan Lokal (Energi, Hewani, Nabati, Sayur, Buah)" class="page-img" loading="lazy">
+            </div>
+          </div>
+
+          <!-- Page 7: Lembar Penutup & Kuesioner Evaluasi (Interaktif Eksklusif) -->
+          <div class="page-sheet closing-page" data-density="hard" data-title="Evaluasi & Kuesioner G-Form">
+            <div class="page-content closing-content">
+              <div class="closing-card">
+                <div class="closing-badge">
+                  <i data-lucide="check-circle-2"></i>
+                  <span>Selesai Membaca</span>
+                </div>
+                <h2 class="closing-title">Terima Kasih Telah Membaca!</h2>
+                <p class="closing-desc">
+                  Buku panduan ini disusun untuk mendukung kesehatan dan pemenuhan gizi optimal balita di wilayah kerja Puskesmas Wonokromo.
+                </p>
+
+                <div class="closing-action-box">
+                  <div class="action-icon-circle">
+                    <i data-lucide="clipboard-pen-line"></i>
+                  </div>
+                  <div class="action-text">
+                    <h3>Formulir Evaluasi & Masukan</h3>
+                    <p>Mohon luangkan 1 menit untuk mengisi formulir umpan balik melalui Google Form berikut:</p>
+                  </div>
+                  <a id="closingGformBtn" href="https://docs.google.com/forms/d/e/1FAIpQLSfOfoPuaTh7JMjJ1oFSze31kfmUiqKKR8ETR2IQn9tKEXeLnw/viewform" target="_blank" rel="noopener noreferrer" class="btn-gform-cta">
+                    <span>Buka Google Form Sekarang</span>
+                    <i data-lucide="external-link"></i>
+                  </a>
+                </div>
+
+                <div class="closing-footer-note">
+                  <a href="coba booklet.pdf" download="Panduan-Praktis-Balita-Gizi.pdf" class="btn-download-pdf">
+                    <i data-lucide="download"></i>
+                    <span>Unduh PDF Asli</span>
+                  </a>
+                  <button id="restartBookBtn" class="btn-restart-book">
+                    <i data-lucide="rotate-ccw"></i>
+                    <span>Baca Dari Awal</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Next Page Arrow Overlay -->
+      <button id="nextBtn" class="side-nav-btn next-btn" aria-label="Halaman Berikutnya" title="Halaman Berikutnya (Panah Kanan)">
+        <i data-lucide="chevron-right"></i>
+      </button>
+    </main>
+
+    <!-- Bottom Controls & Page Scrubber Bar -->
+    <footer class="bottom-bar">
+      <div class="bottom-inner">
+        <!-- Direct Quick Jump Previous -->
+        <button id="bottomPrevBtn" class="nav-control-btn" title="Halaman Sebelumnya">
+          <i data-lucide="chevron-left"></i>
+          <span>Sebelumnya</span>
+        </button>
+
+        <!-- Slider Scrubber -->
+        <div class="scrubber-wrapper">
+          <span class="page-indicator" id="pageDisplay">Halaman 1 / 7</span>
+          <input type="range" id="pageSlider" min="0" max="6" value="0" step="1" aria-label="Geser Halaman">
+          <div class="spread-indicator" id="spreadDisplay">Cover</div>
+        </div>
+
+        <!-- Direct Quick Jump Next -->
+        <button id="bottomNextBtn" class="nav-control-btn" title="Halaman Berikutnya">
+          <span>Berikutnya</span>
+          <i data-lucide="chevron-right"></i>
+        </button>
+
+        <!-- Auxiliary Tools -->
+        <div class="bottom-tools">
+          <button id="autoPlayBtn" class="tool-btn" title="Mulai Putar Otomatis">
+            <i data-lucide="play" id="autoPlayIcon"></i>
+            <span class="tool-label">Auto</span>
+          </button>
+          <a href="coba booklet.pdf" download="Panduan-Praktis-Balita-Gizi.pdf" class="tool-btn" title="Unduh File PDF">
+            <i data-lucide="file-down"></i>
+            <span class="tool-label">PDF</span>
+          </a>
+          <button id="shareBtn" class="tool-btn" title="Bagikan Buku Ini">
+            <i data-lucide="share-2"></i>
+            <span class="tool-label">Share</span>
+          </button>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Slide-over Drawer: Table of Contents & Navigation (Right side, matching Heyzine style) -->
+    <aside id="tocDrawer" class="drawer-panel drawer-right" aria-hidden="true">
+      <div class="drawer-header">
+        <div class="drawer-title-group">
+          <i data-lucide="bookmark"></i>
+          <div>
+            <h3>Daftar Isi & Menu</h3>
+            <p>Pilih halaman untuk melompat</p>
+          </div>
+        </div>
+        <button id="closeTocBtn" class="close-drawer-btn" aria-label="Tutup Menu">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+
+      <!-- Highlight G-Form Card in Right Drawer -->
+      <div class="drawer-gform-banner">
+        <div class="gform-banner-header">
+          <span class="banner-tag">PENTING &bull; KUISIONER</span>
+          <i data-lucide="sparkles" class="banner-sparkle"></i>
+        </div>
+        <h4>Kuesioner Pembaca Booklet</h4>
+        <p>Bantu kami meningkatkan program gizi balita dengan mengisi form berikut:</p>
+        <a id="drawerGformBtn" href="https://docs.google.com/forms/d/e/1FAIpQLSfOfoPuaTh7JMjJ1oFSze31kfmUiqKKR8ETR2IQn9tKEXeLnw/viewform" target="_blank" rel="noopener noreferrer" class="btn-drawer-gform">
+          <i data-lucide="file-text"></i>
+          <span>Buka Form Kuesioner</span>
+          <i data-lucide="arrow-up-right"></i>
+        </a>
+      </div>
+
+      <!-- TOC Item List -->
+      <div class="toc-list" id="tocList">
+        <!-- Dynamically rendered or templated -->
+        <div class="toc-item active" data-page="0">
+          <span class="toc-number">01</span>
+          <div class="toc-meta">
+            <h5 class="toc-heading">Panduan Praktis (Cover Depan)</h5>
+            <span class="toc-sub">Aldenaire Academy &bull; Puskesmas Wonokromo</span>
+          </div>
+          <i data-lucide="chevron-right" class="toc-arrow"></i>
+        </div>
+
+        <div class="toc-item" data-page="1">
+          <span class="toc-number">02</span>
+          <div class="toc-meta">
+            <h5 class="toc-heading">Panduan Praktis Pangan Lokal</h5>
+            <span class="toc-sub">Your Guide to a Positive Journey</span>
+          </div>
+          <i data-lucide="chevron-right" class="toc-arrow"></i>
+        </div>
+
+        <div class="toc-item" data-page="2">
+          <span class="toc-number">03</span>
+          <div class="toc-meta">
+            <h5 class="toc-heading">Pengantar Program PMT</h5>
+            <span class="toc-sub">Data & Sasaran Puskesmas Wonokromo</span>
+          </div>
+          <i data-lucide="chevron-right" class="toc-arrow"></i>
+        </div>
+
+        <div class="toc-item" data-page="3">
+          <span class="toc-number">04</span>
+          <div class="toc-meta">
+            <h5 class="toc-heading">Apa Itu Gizi Kurang?</h5>
+            <span class="toc-sub">Kebutuhan, Kualitas & Pemantauan Posyandu</span>
+          </div>
+          <i data-lucide="chevron-right" class="toc-arrow"></i>
+        </div>
+
+        <div class="toc-item" data-page="4">
+          <span class="toc-number">05</span>
+          <div class="toc-meta">
+            <h5 class="toc-heading">Prinsip Makanan Tambahan</h5>
+            <span class="toc-sub">Mendukung Pertumbuhan & Energi Protein</span>
+          </div>
+          <i data-lucide="chevron-right" class="toc-arrow"></i>
+        </div>
+
+        <div class="toc-item" data-page="5">
+          <span class="toc-number">06</span>
+          <div class="toc-meta">
+            <h5 class="toc-heading">Variasi Bahan Makanan Lokal</h5>
+            <span class="toc-sub">Energi, Hewani, Nabati, Sayur & Buah</span>
+          </div>
+          <i data-lucide="chevron-right" class="toc-arrow"></i>
+        </div>
+
+        <div class="toc-item toc-item-featured" data-page="6">
+          <span class="toc-number">07</span>
+          <div class="toc-meta">
+            <h5 class="toc-heading">Penutup & Link Google Form</h5>
+            <span class="toc-sub">Evaluasi & Kuisioner Pendampingan</span>
+          </div>
+          <i data-lucide="external-link" class="toc-arrow"></i>
+        </div>
+      </div>
+
+      <!-- Quick PDF Link in Drawer Footer -->
+      <div class="drawer-footer">
+        <a href="coba booklet.pdf" download="Panduan-Praktis-Balita-Gizi.pdf" class="btn-drawer-download">
+          <i data-lucide="file-down"></i>
+          <span>Unduh Versi PDF Asli (14 MB)</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Slide-up / Drawer: Visual Thumbnails Grid -->
+    <aside id="thumbDrawer" class="drawer-panel drawer-bottom" aria-hidden="true">
+      <div class="drawer-header thumb-header">
+        <div class="drawer-title-group">
+          <i data-lucide="layout-grid"></i>
+          <div>
+            <h3>Pilih Halaman dari Thumbnail</h3>
+            <p>Klik salah satu halaman untuk membuka langsung</p>
+          </div>
+        </div>
+        <button id="closeThumbBtn" class="close-drawer-btn" aria-label="Tutup Thumbnail">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+
+      <div class="thumb-grid" id="thumbGrid">
+        <div class="thumb-card active" data-page="0">
+          <div class="thumb-img-wrap">
+            <img src="assets/thumbs/thumb_1.webp" alt="Thumb 1">
+            <span class="thumb-page-badge">1</span>
+          </div>
+          <div class="thumb-title">Cover</div>
+        </div>
+        <div class="thumb-card" data-page="1">
+          <div class="thumb-img-wrap">
+            <img src="assets/thumbs/thumb_2.webp" alt="Thumb 2">
+            <span class="thumb-page-badge">2</span>
+          </div>
+          <div class="thumb-title">Judul</div>
+        </div>
+        <div class="thumb-card" data-page="2">
+          <div class="thumb-img-wrap">
+            <img src="assets/thumbs/thumb_3.webp" alt="Thumb 3">
+            <span class="thumb-page-badge">3</span>
+          </div>
+          <div class="thumb-title">Pengantar</div>
+        </div>
+        <div class="thumb-card" data-page="3">
+          <div class="thumb-img-wrap">
+            <img src="assets/thumbs/thumb_4.webp" alt="Thumb 4">
+            <span class="thumb-page-badge">4</span>
+          </div>
+          <div class="thumb-title">Gizi Kurang</div>
+        </div>
+        <div class="thumb-card" data-page="4">
+          <div class="thumb-img-wrap">
+            <img src="assets/thumbs/thumb_5.webp" alt="Thumb 5">
+            <span class="thumb-page-badge">5</span>
+          </div>
+          <div class="thumb-title">Prinsip PMT</div>
+        </div>
+        <div class="thumb-card" data-page="5">
+          <div class="thumb-img-wrap">
+            <img src="assets/thumbs/thumb_6.webp" alt="Thumb 6">
+            <span class="thumb-page-badge">6</span>
+          </div>
+          <div class="thumb-title">Bahan Makanan</div>
+        </div>
+        <div class="thumb-card thumb-card-gform" data-page="6">
+          <div class="thumb-img-wrap thumb-gform-preview">
+            <i data-lucide="clipboard-check"></i>
+            <span class="thumb-page-badge">7</span>
+          </div>
+          <div class="thumb-title">Form GForm</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Modal: Zoom / Inspect HD View -->
+    <div id="zoomModal" class="modal-overlay" aria-hidden="true">
+      <div class="modal-dialog zoom-dialog">
+        <div class="modal-header">
+          <div class="zoom-title-area">
+            <i data-lucide="zoom-in"></i>
+            <h3 id="zoomPageTitle">Mode Zoom HD - Halaman 1</h3>
+          </div>
+          <div class="zoom-header-actions">
+            <button id="zoomOutBtn" class="icon-btn" title="Perkecil"><i data-lucide="minus"></i></button>
+            <span id="zoomLevelText" class="zoom-scale-text">100%</span>
+            <button id="zoomInBtn" class="icon-btn" title="Perbesar"><i data-lucide="plus"></i></button>
+            <button id="zoomResetBtn" class="icon-btn" title="Reset Ukuran"><i data-lucide="refresh-cw"></i></button>
+            <button id="closeZoomBtn" class="close-modal-btn" aria-label="Tutup Zoom"><i data-lucide="x"></i></button>
+          </div>
+        </div>
+        <div class="zoom-viewport" id="zoomViewport">
+          <img id="zoomImg" src="assets/pages/page_1.webp" alt="Zoom Page" class="zoom-img">
+        </div>
+        <div class="zoom-footer-hint">
+          <p><i data-lucide="info"></i> Klik tahan dan geser untuk menggerakkan halaman saat dizoom</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Share Link -->
+    <div id="shareModal" class="modal-overlay" aria-hidden="true">
+      <div class="modal-dialog share-dialog">
+        <div class="modal-header">
+          <div class="zoom-title-area">
+            <i data-lucide="share-2"></i>
+            <h3>Bagikan Buku Panduan</h3>
+          </div>
+          <button id="closeShareBtn" class="close-modal-btn" aria-label="Tutup"><i data-lucide="x"></i></button>
+        </div>
+        <div class="modal-body share-body">
+          <p>Bagikan booklet interaktif ini kepada orang tua, kader Posyandu, atau tenaga kesehatan:</p>
+          <div class="share-copy-box">
+            <input type="text" id="shareUrlInput" readonly value="">
+            <button id="copyShareBtn" class="btn-copy">
+              <i data-lucide="copy" id="copyIcon"></i>
+              <span id="copyText">Salin</span>
+            </button>
+          </div>
+          <div class="share-channels">
+            <a id="waShareBtn" href="#" target="_blank" rel="noopener noreferrer" class="share-pill wa">
+              <i data-lucide="message-circle"></i>
+              <span>WhatsApp</span>
+            </a>
+            <a id="telegramShareBtn" href="#" target="_blank" rel="noopener noreferrer" class="share-pill tele">
+              <i data-lucide="send"></i>
+              <span>Telegram</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: G-Form URL Configuration Helper (Convenient for user) -->
+    <div id="gformConfigModal" class="modal-overlay" aria-hidden="true">
+      <div class="modal-dialog config-dialog">
+        <div class="modal-header">
+          <div class="zoom-title-area">
+            <i data-lucide="settings"></i>
+            <h3>Pengaturan Link Google Form</h3>
+          </div>
+          <button id="closeConfigBtn" class="close-modal-btn"><i data-lucide="x"></i></button>
+        </div>
+        <div class="modal-body">
+          <p>Kamu dapat mengganti link Google Form kapan saja disini tanpa harus edit kode secara manual:</p>
+          <div class="config-field">
+            <label for="gformUrlInput">URL Google Form Anda:</label>
+            <input type="url" id="gformUrlInput" placeholder="https://forms.gle/..." value="https://forms.gle/">
+          </div>
+          <div class="config-actions">
+            <button id="saveGformBtn" class="btn-save-gform">Simpan Link Form</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Backdrop for drawer/modals -->
+    <div id="backdrop" class="app-backdrop"></div>
+
+  </div>
+
+  <!-- Main JavaScript Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
