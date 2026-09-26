@@ -17,7 +17,7 @@ let GOOGLE_FORM_URL = queryGForm || CLEAN_GFORM_URL;
 const AppState = {
   pageFlip: null,
   currentPage: 0,
-  totalPages: 7,
+  totalPages: 22,
   soundEnabled: true,
   autoPlayInterval: null,
   zoomScale: 1.0,
@@ -29,13 +29,28 @@ const AppState = {
 };
 
 const PAGE_METAS = [
-  { index: 0, title: 'Sampul Depan (Cover)', sub: 'Panduan Praktis PMT Balita Gizi Kurang', img: 'assets/pages/page_1.webp' },
-  { index: 1, title: 'Halaman Judul & Filosofi', sub: 'Your Guide to a Positive Journey', img: 'assets/pages/page_2.webp' },
-  { index: 2, title: 'Pengantar Program Gizi', sub: 'Data & Sasaran Puskesmas Wonokromo', img: 'assets/pages/page_3.webp' },
-  { index: 3, title: 'Apa Itu Gizi Kurang?', sub: 'Pemantauan Posyandu & Karakteristik Balita', img: 'assets/pages/page_4.webp' },
-  { index: 4, title: 'Prinsip Makanan Tambahan', sub: 'Mendukung Pertumbuhan & Energi Protein', img: 'assets/pages/page_5.webp' },
-  { index: 5, title: 'Variasi Bahan Makanan Lokal', sub: 'Energi, Hewani, Nabati, Sayur, & Buah', img: 'assets/pages/page_6.webp' },
-  { index: 6, title: 'Evaluasi & Kuesioner (G-Form)', sub: 'Umpan Balik & Konfirmasi Pembaca', img: null }
+  { index: 0,  title: 'Sampul Depan (Cover)',         sub: 'Panduan Praktis PMT Balita Gizi Kurang',           img: 'assets/pages/page_1.webp' },
+  { index: 1,  title: 'Pengantar Program Gizi',        sub: 'Latar Belakang & Tujuan Panduan',                  img: 'assets/pages/page_2.webp' },
+  { index: 2,  title: 'Apa Itu Gizi Kurang?',          sub: 'Definisi, Kondisi & Pemantauan Berkala',           img: 'assets/pages/page_3.webp' },
+  { index: 3,  title: 'Prinsip Makanan Tambahan',      sub: 'Mendukung Pertumbuhan & Pemulihan Status Gizi',    img: 'assets/pages/page_4.webp' },
+  { index: 4,  title: 'Variasi Bahan Makanan',         sub: 'Energi, Hewani, Nabati, Sayur & Buah',            img: 'assets/pages/page_5.webp' },
+  { index: 5,  title: 'Pemberian Makan Responsif',     sub: 'Tips Memberikan Makan dengan Penuh Kasih',         img: 'assets/pages/page_6.webp' },
+  { index: 6,  title: 'Tips Pemilihan Bahan Makanan',  sub: 'Panduan Memilih Pangan Lokal Berkualitas',         img: 'assets/pages/page_7.webp' },
+  { index: 7,  title: 'Panduan Angka Kecukupan Gizi',  sub: 'AKG Balita Dalam Sehari',                          img: 'assets/pages/page_8.webp' },
+  { index: 8,  title: 'Kebutuhan Makanan Sehari',      sub: 'Porsi & Frekuensi Makan yang Tepat',              img: 'assets/pages/page_9.webp' },
+  { index: 9,  title: 'Lengkapi Makanan Balita (1)',   sub: 'Contoh Menu Sehari',                               img: 'assets/pages/page_10.webp' },
+  { index: 10, title: 'Lengkapi Makanan Balita (2)',   sub: 'Variasi Menu Pagi & Siang',                        img: 'assets/pages/page_11.webp' },
+  { index: 11, title: 'Lengkapi Makanan Balita (3)',   sub: 'Variasi Menu Malam & Snack',                       img: 'assets/pages/page_12.webp' },
+  { index: 12, title: 'Lengkapi Makanan Balita (4)',   sub: 'Bahan Makanan & Ukuran Porsi',                     img: 'assets/pages/page_13.webp' },
+  { index: 13, title: 'Pilihan Menu Balita (1)',        sub: 'Resep Masakan Pangan Lokal Bergizi',               img: 'assets/pages/page_14.webp' },
+  { index: 14, title: 'Pilihan Menu Balita (2)',        sub: 'Ide Masak Sehat & Lezat',                          img: 'assets/pages/page_15.webp' },
+  { index: 15, title: 'Pilihan Menu Balita (3)',        sub: 'Menu Spesial Balita Susah Makan',                  img: 'assets/pages/page_16.webp' },
+  { index: 16, title: 'Pilihan Menu Balita (4)',        sub: 'Kreasi Menu Picky Eater',                          img: 'assets/pages/page_17.webp' },
+  { index: 17, title: 'Pemantauan ke Posyandu',         sub: 'Pemantauan Berkala Tumbuh Kembang',                img: 'assets/pages/page_18.webp' },
+  { index: 18, title: 'Peran Ibu, Kader & Petugas',   sub: 'Kolaborasi untuk Gizi Balita Optimal',             img: 'assets/pages/page_19.webp' },
+  { index: 19, title: 'Monitoring & Evaluasi',          sub: 'Isi Google Form — Terima Kasih!',                  img: 'assets/pages/page_20.webp' },
+  { index: 20, title: 'Daftar Pustaka',                 sub: 'Referensi & Sumber Ilmiah',                        img: 'assets/pages/page_21.webp' },
+  { index: 21, title: 'Sampul Belakang',                sub: 'Universitas Negeri Surabaya • Prodi S1 Gizi',      img: 'assets/pages/page_22.webp' }
 ];
 
 // ==========================================
@@ -350,12 +365,11 @@ function closeAllDrawers() {
 // 8. ZOOM HD MODAL LOGIC
 // ==========================================
 function openZoomModal() {
-  const pageIdx = Math.min(AppState.currentPage, 5); // Pages 0..5 have images
+  const pageIdx = AppState.currentPage;
   const meta = PAGE_METAS[pageIdx];
   if (!meta || !meta.img) {
-    // If on closing page, zoom into page 6
-    DOM.zoomImg.src = 'assets/pages/page_6.webp';
-    DOM.zoomPageTitle.textContent = `Mode Zoom HD - Halaman 6`;
+    DOM.zoomImg.src = `assets/pages/page_${pageIdx + 1}.webp`;
+    DOM.zoomPageTitle.textContent = `Mode Zoom HD - Halaman ${pageIdx + 1}`;
   } else {
     DOM.zoomImg.src = meta.img;
     DOM.zoomPageTitle.textContent = `Mode Zoom HD - Halaman ${pageIdx + 1}: ${meta.title}`;

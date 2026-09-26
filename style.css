@@ -1474,3 +1474,47 @@ body.theme-dark .drawer-gform-banner p {
     padding: 0.5rem 2.4rem;
   }
 }
+
+/* =============================================
+   G-Form Floating Button Overlay on Page 20
+   ============================================= */
+.page-gform-overlay {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--accent-gform);
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 0.55rem 1.2rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 4px 18px var(--accent-gform-glow);
+  white-space: nowrap;
+  transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+  z-index: 10;
+  animation: pulseGform 2.2s ease-in-out infinite;
+}
+
+.page-gform-overlay:hover {
+  background: var(--accent-gform-hover);
+  transform: translateX(-50%) translateY(-2px);
+  box-shadow: 0 8px 28px var(--accent-gform-glow);
+}
+
+.page-gform-overlay svg {
+  width: 16px;
+  height: 16px;
+  stroke: #fff;
+}
+
+@keyframes pulseGform {
+  0%, 100% { box-shadow: 0 4px 18px var(--accent-gform-glow); }
+  50%        { box-shadow: 0 6px 28px rgba(124, 58, 237, 0.55); }
+}
