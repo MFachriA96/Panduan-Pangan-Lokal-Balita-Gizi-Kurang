@@ -646,8 +646,20 @@ html, body {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 900px;
-  gap: 1rem;
+  max-width: 920px;
+  gap: 1.25rem;
+}
+
+.bottom-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.bottom-nav-group {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
 }
 
 .nav-control-btn {
@@ -683,11 +695,18 @@ html, body {
 
 .scrubber-wrapper {
   flex: 1;
-  max-width: 440px;
+  max-width: 480px;
   display: flex;
   flex-direction: column;
+  gap: 0.35rem;
+}
+
+.scrubber-meta {
+  display: flex;
   align-items: center;
-  gap: 0.3rem;
+  justify-content: space-between;
+  width: 100%;
+  gap: 0.5rem;
 }
 
 .page-indicator {
@@ -695,12 +714,17 @@ html, body {
   font-weight: 700;
   color: var(--text-main);
   letter-spacing: -0.01em;
+  white-space: nowrap;
 }
 
 .spread-indicator {
   font-size: 0.72rem;
   font-weight: 500;
   color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 240px;
 }
 
 /* Range input scrubber */
@@ -1228,34 +1252,69 @@ body.theme-dark .drawer-gform-banner p {
 }
 
 .zoom-dialog {
-  width: 900px;
+  width: 920px;
   max-width: 96vw;
   height: 90vh;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .zoom-title-area {
   display: flex;
   align-items: center;
   gap: 0.6rem;
+  min-width: 0;
+  flex: 1 1 auto;
+  overflow: hidden;
 }
 
-.zoom-title-area svg {
+.zoom-title-icon {
   width: 20px;
   height: 20px;
+  min-width: 20px;
   color: var(--primary);
 }
 
 .zoom-title-area h3 {
-  font-size: 1rem;
+  font-size: 0.92rem;
   font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.zoom-title-badge {
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.zoom-title-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .zoom-header-actions {
   display: flex;
   align-items: center;
   gap: 0.4rem;
+  flex-shrink: 0;
+}
+
+.zoom-ctrl-btn {
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
 }
 
 .zoom-scale-text {
@@ -1263,6 +1322,27 @@ body.theme-dark .drawer-gform-banner p {
   font-weight: 700;
   min-width: 44px;
   text-align: center;
+  color: var(--text-main);
+}
+
+.close-zoom-highlight {
+  background: rgba(239, 68, 68, 0.12) !important;
+  color: #ef4444 !important;
+  border: 1px solid rgba(239, 68, 68, 0.28) !important;
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  border-radius: 50% !important;
+  flex-shrink: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.close-zoom-highlight:hover {
+  background: #ef4444 !important;
+  color: #ffffff !important;
+  transform: scale(1.08);
 }
 
 .zoom-viewport {
@@ -1271,7 +1351,7 @@ body.theme-dark .drawer-gform-banner p {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #111827;
+  background: #0f172a;
   cursor: grab;
   position: relative;
 }
@@ -1288,23 +1368,67 @@ body.theme-dark .drawer-gform-banner p {
   transform-origin: center center;
 }
 
+/* Floating Close Button inside Zoom Viewport for Mobile & Quick Access */
+.floating-close-zoom-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 50;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(15, 23, 42, 0.88);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  transition: all var(--transition-fast);
+}
+
+.floating-close-zoom-btn:hover {
+  background: #ef4444;
+  border-color: #ef4444;
+  transform: scale(1.05);
+}
+
+.floating-close-zoom-btn svg {
+  width: 15px;
+  height: 15px;
+  stroke: #ffffff;
+}
+
 .zoom-footer-hint {
-  padding: 0.6rem 1.25rem;
+  padding: 0.55rem 1.25rem;
   background: var(--bg-secondary);
   border-top: 1px solid var(--border-subtle);
   font-size: 0.78rem;
   color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .zoom-footer-hint p {
   display: flex;
   align-items: center;
   gap: 0.4rem;
+  margin: 0;
 }
 
 .zoom-footer-hint svg {
   width: 14px;
   height: 14px;
+}
+
+.footer-close-btn {
+  display: none;
 }
 
 /* Share Modal */
@@ -1428,7 +1552,7 @@ body.theme-dark .drawer-gform-banner p {
 }
 
 /* --------------------------------------------------------------------------
-   Responsive Breakpoints
+   Responsive Breakpoints & Mobile Optimization
    -------------------------------------------------------------------------- */
 @media (max-width: 880px) {
   .nav-center {
@@ -1436,12 +1560,12 @@ body.theme-dark .drawer-gform-banner p {
   }
 
   .flipbook-viewport {
-    padding: 0.75rem 2.8rem;
+    padding: 0.5rem 2.2rem;
   }
 
   .side-nav-btn {
-    width: 38px;
-    height: 38px;
+    width: 36px;
+    height: 36px;
   }
 
   .side-nav-btn svg {
@@ -1449,29 +1573,308 @@ body.theme-dark .drawer-gform-banner p {
     height: 18px;
   }
 
-  .prev-btn { left: 0.4rem; }
-  .next-btn { right: 0.4rem; }
+  .prev-btn { left: 0.3rem; }
+  .next-btn { right: 0.3rem; }
 
   .bottom-tools .tool-label {
     display: none;
   }
 }
 
+/* Mobile Zoom Modal (Tablets & Phones) */
+@media (max-width: 768px) {
+  .modal-overlay {
+    padding: 0 !important;
+  }
+
+  .zoom-dialog {
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    max-width: 100vw !important;
+    max-height: 100dvh !important;
+    border-radius: 0 !important;
+    border: none !important;
+  }
+
+  .modal-header {
+    padding: 0.5rem 0.75rem !important;
+    gap: 0.4rem !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 20 !important;
+  }
+
+  .zoom-title-area {
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+    overflow: hidden !important;
+    gap: 0.35rem !important;
+  }
+
+  .zoom-title-icon {
+    display: none !important;
+  }
+
+  .zoom-title-area h3 {
+    font-size: 0.78rem !important;
+  }
+
+  .zoom-title-badge {
+    font-size: 0.68rem !important;
+    padding: 0.1rem 0.35rem !important;
+  }
+
+  .zoom-header-actions {
+    flex-shrink: 0 !important;
+    gap: 0.2rem !important;
+  }
+
+  .zoom-ctrl-btn {
+    width: 30px !important;
+    height: 30px !important;
+    min-width: 30px !important;
+    padding: 0 !important;
+  }
+
+  .zoom-ctrl-btn svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+
+  .zoom-scale-text {
+    font-size: 0.72rem !important;
+    min-width: 32px !important;
+  }
+
+  .close-zoom-highlight {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .close-zoom-highlight svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .floating-close-zoom-btn {
+    top: 10px !important;
+    right: 10px !important;
+    padding: 0.4rem 0.75rem !important;
+    font-size: 0.75rem !important;
+  }
+
+  .zoom-footer-hint {
+    padding: 0.4rem 0.75rem !important;
+  }
+
+  .zoom-footer-hint p {
+    font-size: 0.7rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 60% !important;
+  }
+
+  .footer-close-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.3rem !important;
+    padding: 0.35rem 0.65rem !important;
+    border-radius: var(--radius-md) !important;
+    background: #ef4444 !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    font-size: 0.75rem !important;
+    border: none !important;
+    cursor: pointer !important;
+    flex-shrink: 0 !important;
+  }
+
+  .footer-close-btn svg {
+    width: 14px !important;
+    height: 14px !important;
+    stroke: #ffffff !important;
+  }
+}
+
+/* Mobile Screens (<= 600px) */
 @media (max-width: 600px) {
+  .top-nav {
+    height: 52px;
+    padding: 0 0.65rem;
+  }
+
+  .brand-badge {
+    gap: 0.45rem;
+  }
+
+  .brand-icon {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    border-radius: var(--radius-sm);
+  }
+
+  .brand-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .brand-title {
+    font-size: 0.88rem !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 140px;
+    line-height: 1.2;
+  }
+
   .brand-subtitle {
     display: none;
+  }
+
+  .nav-right {
+    gap: 0.25rem;
+  }
+
+  .icon-btn {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    padding: 0;
+  }
+
+  .icon-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Sound is accessible in drawer/menu; keep header neat and spacious */
+  #soundToggleBtn {
+    display: none;
+  }
+
+  /* Flipbook Viewport Mobile: More space for the booklet */
+  .flipbook-viewport {
+    padding: 0.25rem 1.6rem;
+  }
+
+  .side-nav-btn {
+    width: 32px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  body.theme-dark .side-nav-btn {
+    background: rgba(30, 41, 59, 0.92);
+  }
+
+  .prev-btn { left: 3px; }
+  .next-btn { right: 3px; }
+
+  /* Mobile Bottom Scrubber & Controls: Clean 2-Row Stack, NO overlapping */
+  .bottom-bar {
+    height: auto;
+    min-height: 80px;
+    padding: 6px 10px calc(8px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .bottom-inner {
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+  }
+
+  .scrubber-wrapper {
+    width: 100%;
+    max-width: 100%;
+    order: 1;
+    gap: 2px;
+  }
+
+  .scrubber-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .page-indicator {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--text-main);
+    white-space: nowrap;
+  }
+
+  .spread-indicator {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 180px;
+    text-align: right;
+  }
+
+  #pageSlider {
+    width: 100%;
+    height: 6px;
+    margin: 2px 0 0 0;
+  }
+
+  .bottom-actions-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    order: 2;
+    gap: 6px;
+  }
+
+  .bottom-nav-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .nav-control-btn {
+    padding: 5px 9px;
+    min-width: 34px;
+    height: 34px;
+    font-size: 0.78rem;
   }
 
   .nav-control-btn span {
     display: none;
   }
 
-  .nav-control-btn {
-    padding: 0.5rem;
+  .bottom-tools {
+    display: flex;
+    gap: 5px;
   }
 
-  .flipbook-viewport {
-    padding: 0.5rem 2.4rem;
+  .bottom-tools .tool-btn {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .bottom-tools .tool-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .bottom-tools .tool-label {
+    display: none;
   }
 }
 
@@ -1517,4 +1920,17 @@ body.theme-dark .drawer-gform-banner p {
 @keyframes pulseGform {
   0%, 100% { box-shadow: 0 4px 18px var(--accent-gform-glow); }
   50%        { box-shadow: 0 6px 28px rgba(124, 58, 237, 0.55); }
+}
+
+@media (max-width: 600px) {
+  .page-gform-overlay {
+    bottom: 4%;
+    padding: 0.45rem 0.9rem;
+    font-size: 0.78rem;
+    gap: 0.35rem;
+  }
+  .page-gform-overlay svg {
+    width: 14px;
+    height: 14px;
+  }
 }
